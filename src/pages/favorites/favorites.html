@@ -2,6 +2,14 @@
 <ion-header>
 
   <ion-navbar>
+    <!-- Aligns the element at the start based on platform.
+    iOS goes left, Android is the first item on the right-->
+    <ion-buttons start>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+
     <ion-title>Favorite Quotes</ion-title>
   </ion-navbar>
 
@@ -12,7 +20,10 @@
   <ion-list>
     <!-- sliding button for favorite removal -->
     <ion-item-sliding *ngFor="let quote of quotes">
-      <ion-item  (click)="onViewQuote(quote)" color="quoteBackground">
+      <ion-item
+        (click)="onViewQuote(quote)"
+        color="quoteBackground"
+        [ngClass]="{alt: isAltBackground()}">
         <h2> {{ quote.person }} </h2>
         <p> {{ quote.text }}</p>
       </ion-item>
